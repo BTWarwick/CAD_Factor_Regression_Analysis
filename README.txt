@@ -14,7 +14,7 @@ Prior to running the scripts, the following lines of code must be executed if th
 
 pip install pandas
 pip install numpy
-pip install DateTime
+pip install xlrd
 pip install statsmodels
 pip install urllib3
 pip install zipfile37
@@ -25,11 +25,3 @@ Prior to running the CDN_listed_CDN_Equity.py script for the first time, run get
 Once the dataset is downloaded, the getAQR_QMJ.py script is not required to be executed unless updated data is required. 
 
 CDN_Factor_Regression.py contains the functions CDN_Listed_CDN_Equity, CDN_Listed_US_Equity, and US_Listed_US_Equity if the user prefers to have everything together in one file.
-
-
-
-
-
-
-
-
