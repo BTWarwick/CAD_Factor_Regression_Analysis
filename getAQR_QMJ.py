@@ -1,10 +1,18 @@
 # Import AQR Factors for Cdn data.
 
-import pandas as pd 
+import pandas as pd
 import datetime
+import urllib.request
+
+DATASET_FILENAME = "Quality-Minus-Junk-Factors-Daily.xlsx"
+
+def get_AQR_DataSet():
+    with urllib.request.urlopen("https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Daily.xlsx") as dataset_file:
+        with open(DATASET_FILENAME, "wb") as local_dataset_file:
+            local_dataset_file.write(dataset_file.read())
 
 def get_AQR_mkt():
-    Mkt = pd.read_excel("https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Daily.xlsx",
+    Mkt = pd.read_excel(DATASET_FILENAME,
                         index_col=0,
                         usecols=[0,4],
                         sheet_name='MKT',
@@ -19,7 +27,7 @@ def get_AQR_mkt():
     return Mkt
 
 def get_AQR_SMB():    
-    SMB = pd.read_excel("https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Daily.xlsx",
+    SMB = pd.read_excel(DATASET_FILENAME,
                         index_col=0,
                         usecols=[0,4],
                         sheet_name='SMB',
@@ -34,7 +42,7 @@ def get_AQR_SMB():
     return SMB
 
 def get_AQR_HML():    
-    HML = pd.read_excel("https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Daily.xlsx",
+    HML = pd.read_excel(DATASET_FILENAME,
                         index_col=0,
                         usecols=[0,4],
                         sheet_name='HML FF',
@@ -49,7 +57,7 @@ def get_AQR_HML():
     return HML
 
 def get_AQR_UMD():
-    UMD = pd.read_excel("https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Daily.xlsx",
+    UMD = pd.read_excel(DATASET_FILENAME,
                         index_col=0,
                         usecols=[0,4],
                         sheet_name='UMD',
@@ -64,7 +72,7 @@ def get_AQR_UMD():
     return UMD    
     
 def get_AQR_QMJ():
-    QMJ = pd.read_excel("https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Daily.xlsx",
+    QMJ = pd.read_excel(DATASET_FILENAME,
                         index_col=0,
                         usecols=[0,4],
                         sheet_name='QMJ Factors',
@@ -79,7 +87,7 @@ def get_AQR_QMJ():
     return QMJ
     
 def get_AQR_RF():
-    RF = pd.read_excel("https://images.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Quality-Minus-Junk-Factors-Daily.xlsx",
+    RF = pd.read_excel(DATASET_FILENAME,
                         index_col=0,
                         usecols=[0,1],
                         sheet_name='RF',
@@ -93,6 +101,7 @@ def get_AQR_RF():
     RF.to_csv('RF.csv')
     return RF
 
+get_AQR_DataSet()
 get_AQR_mkt()
 get_AQR_SMB()
 get_AQR_HML()
